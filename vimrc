@@ -20,6 +20,7 @@ call vundle#rc()
 Bundle 'scrooloose/nerdtree'
 Bundle 'msanders/snipmate.vim'
 Bundle 'vim-markdown-preview'
+Bundle 'altercation/vim-colors-solarized'
 " Bundle 'lokaltog/vim-easymotion'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " vim-scripts repos
@@ -51,8 +52,8 @@ set nocompatible
 " disable intro message
 " set shortmess+=I
 
-call pathogen#runtime_append_all_bundles() 
-call pathogen#helptags()
+" call pathogen#runtime_append_all_bundles() 
+" call pathogen#helptags()
 
 filetype on
 

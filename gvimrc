@@ -5,7 +5,7 @@ set lines=50
 set columns=100
   
   "default MacVim colorscheme:
- set background=dark
+set background=dark
 colorscheme solarized
 " colorscheme ir_black
 
