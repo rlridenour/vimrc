@@ -19,7 +19,7 @@ call vundle#rc()
 " original repos on github
 Bundle 'scrooloose/nerdtree'
 Bundle 'msanders/snipmate.vim'
-Bundle 'vim-markdown-preview'
+Bundle 'nelstrom/vim-markdown-preview'
 Bundle 'altercation/vim-colors-solarized'
 " Bundle 'lokaltog/vim-easymotion'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -264,4 +264,8 @@ let g:LatexBox_viewer = "skim"
 let g:LatexBox_latexmk_options = "-pvc"
 
 let g:PreviewBrowsers='safari,firefox'
+
+" EasyMotion
+
+let g:EasyMotion_leader_key='<Leader>m'
 
