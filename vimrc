@@ -25,6 +25,7 @@ Bundle 'hsitz/VimOrganizer'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'tpope/vim-surround'
 Bundle 'tomtom/tcomment_vim'
+Bundle 'shemerey/vim-peepopen'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " vim-scripts repos
 Bundle 'LaTeX-Box'
@@ -34,7 +35,7 @@ Bundle 'calendar.vim--Matsumoto'
 " Bundle 'FuzzyFinder'
 " Bundle 'rails.vim'
 " non github repos
-Bundle 'git://git.wincent.com/command-t.git'
+" Bundle 'git://git.wincent.com/command-t.git'
 " ...
 
 filetype plugin indent on     " required!
@@ -103,6 +104,14 @@ let mapleader = ","
 
 " Edit vimrc with leader-ev
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+
+" Peepopen map to command-t
+
+" if has("gui_macvim")
+"   macmenu &File.New\ Tab key=<nop>
+"   map <D-t> <Plug>PeepOpen
+" end
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Searching
 
@@ -274,7 +283,7 @@ augroup mkd
 augroup END
 
 " Markdown Preview
-map <leader>p :Mm<CR>
+map <leader>mp :Mm<CR>
 
 "Multimarkdown
 
