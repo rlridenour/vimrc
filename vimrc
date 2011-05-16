@@ -21,11 +21,13 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'msanders/snipmate.vim'
 Bundle 'nelstrom/vim-markdown-preview'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'hsitz/VimOrganizer'
 " Bundle 'lokaltog/vim-easymotion'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " vim-scripts repos
 Bundle 'LaTeX-Box'
 Bundle 'Markdown'
+Bundle 'calendar.vim--Matsumoto'
 " Bundle 'L9'
 " Bundle 'FuzzyFinder'
 " Bundle 'rails.vim'
@@ -78,6 +80,25 @@ set timeoutlen=2000
 
 " Default font
 " set guifont=Inconsolata:h14
+
+" Disable modelines
+set modelines=0
+
+set scrolloff=3
+set showmode
+set wildmenu
+set wildmode=list:longest,full
+set cursorline
+set ttyfast
+set relativenumber
+set undofile
+
+" Save when focus is lost
+au FocusLost * :wa
+
+
+let mapleader = ","
+
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Searching
 
@@ -92,7 +113,8 @@ set smartcase
 " smart search (override 'ic' when pattern has uppers)
 set scs
 
-
+" Leader-space to clear highlighted search terms
+nnoremap <leader><space> :noh<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Text Formatting/Layout
 
@@ -116,7 +138,7 @@ set showcmd
 set background=dark
 syntax on
 " colorscheme torte
-colorscheme ir_black
+ colorscheme ir_black
 
 " set background=dark
 " colorscheme solarized
@@ -127,7 +149,6 @@ colorscheme ir_black
 set linebreak
 set spell spelllang=en_us
 set enc=utf-8
-
 
 
 " Turn on line numbering. Turn it off with "set nonu"
@@ -150,7 +171,7 @@ set showmatch
 set matchtime=5
 
 " do not highlight searched phrases
-set nohlsearch
+set hlsearch
 
 " but do highlight as you type you search phrase 
 set incsearch
@@ -181,8 +202,10 @@ inoremap <buffer> <silent> <End>  <C-o>g<End>
 " Map space to search
 map <space> /
 
-"Use ;; to escape
-inoremap ;; <Esc>
+"Use jj to escape
+inoremap jj <Esc>
+
+nnoremap ; :
 
 " Window splitting
 
@@ -255,7 +278,7 @@ let g:LustyExplorerSuppressRubyWarning = 1
 " NERDTree settings (launch with \nt or \\)
 let g:NERDTreeQuitOnOpen = 1
 nmap <silent> <leader>nt <Esc>:NERDTreeToggle<CR>
-nmap <silent> <leader>\ <Esc>:NERDTreeToggle<CR>
+nmap <silent> <leader>, <Esc>:NERDTreeToggle<CR>
  
 
 :set hidden
@@ -265,7 +288,68 @@ let g:LatexBox_latexmk_options = "-pvc"
 
 let g:PreviewBrowsers='safari,firefox'
 
-" EasyMotion
 
-let g:EasyMotion_leader_key='<Leader>m'
+" stuff below here is necessary for VimOrganizer to work right
+filetype plugin indent on
+" use this colorscheme or integrate it into an existing colorscheme
+" colorscheme org_dark
+
+" It is (or will be) helpful to see eol characters when using
+" VimOrganizer, since lines ending with a space are treated
+" as having soft returns, lines ending with non-space have 
+" hard returns
+" set list
+" set listchars=tab:�\ ,eol:�
+" guioption -L removes left scrollbar, which is especially 
+" irritating when split vertical windows appear in VimOrganizer
+set guioptions-=L
+" g:org_agenda_dirs specify directories that, along with 
+" their subtrees, are searched for list of .org files when
+" accessing EditAgendaFiles().  Specify your own here, otherwise
+" default will be for g:org_agenda_dirs to hold single
+" directory which is directory of the first .org file opened
+" in current Vim instance:
+" Below is line I use in my Windows install:
+"let g:org_agenda_dirs=["c:/users/herbert/documents/my\ dropbox","c:/users/herbert/desktop"]
+
+" vars below are used to define default Todo list and
+" default Tag list.  Will be changed in near future so
+" that these are defined by config lines in each .org
+" file itself, but now these are where you can change things:
+let g:org_todo_setup='TODO | DONE'
+" while g:org_tag_setup is itself a string
+let g:org_tag_setup='{@home(h) @work(w) @tennisclub(t)} \n {easy(e) hard(d)} \n {computer(c) phone(p)}'
+
+" leave these as is:
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
+au BufRead,BufNewFile *.org            call org#SetOrgFileType()
+au BufRead *.org :PreLoadTags
+au BufWrite *.org :PreWriteTags
+au BufWritePost *.org :PostWriteTags
+
+" below are two examples of Org-mode "hook" functions
+" These present opportunities for end-user customization
+" of how VimOrganizer works.  For more info see the 
+" documentation for hooks in Emacs' Org-mode documentation:
+" http://orgmode.org/worg/org-configs/org-hooks.php#sec-1_40
+
+" These two hooks are currently the only ones enabled in 
+" the VimOrganizer codebase, but they are easy to add so if
+" there's a particular hook you want go ahead and request it
+" or look for where these hooks are implemented in 
+" /ftplugin/org.vim and use them as example for placing your
+" own hooks in VimOrganizer:
+function! Org_property_changed_functions(line,key, val)
+        "call confirm("prop changed: ".a:line."--key:".a:key." val:".a:val)
+endfunction
+function! Org_after_todo_state_change_hook(line,state1, state2)
+        "call ConfirmDrawer("LOGBOOK")
+        "let str = ": - State: " . Pad(a:state2,10) . "   from: " . Pad(a:state1,10) .
+        "            \ '    [' . Timestamp() . ']'
+        "call append(line("."), repeat(' ',len(matchstr(getline(line(".")),'^\s*'))) . str)
+        
+endfunction
+
+
+
 
