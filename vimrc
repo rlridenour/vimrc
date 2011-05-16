@@ -22,7 +22,9 @@ Bundle 'msanders/snipmate.vim'
 Bundle 'nelstrom/vim-markdown-preview'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'hsitz/VimOrganizer'
-" Bundle 'lokaltog/vim-easymotion'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'tpope/vim-surround'
+Bundle 'tomtom/tcomment_vim'
 " Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 " vim-scripts repos
 Bundle 'LaTeX-Box'
@@ -99,6 +101,8 @@ au FocusLost * :wa
 
 let mapleader = ","
 
+" Edit vimrc with leader-ev
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " Searching
 
@@ -271,6 +275,23 @@ augroup END
 
 " Markdown Preview
 map <leader>p :Mm<CR>
+
+"Multimarkdown
+
+"Multimarkdown to HTML  
+nmap <leader>mmd :%!/usr/local/bin/mmd <cr>  
+</cr></leader> 
+
+
+"Multimarkdown to LaTeX  
+nmap <leader>mtex :%!/usr/local/bin/mmd2tex <cr>  
+</cr></leader> 
+
+
+"Multimarkdown to LaTeX  
+nmap <leader>modf :%!/usr/local/bin/mmd2odf <cr>  
+</cr></leader> 
+
 
 " Turn off LustyExplorer ruby warning
 let g:LustyExplorerSuppressRubyWarning = 1
