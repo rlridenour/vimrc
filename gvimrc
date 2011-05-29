@@ -12,6 +12,9 @@ colorscheme solarized
 " set background=light
 " colorscheme solarized
 
+" change the default EasyMotion shading to something more readable with Solarized
+hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionShade  Comment
 
   "while I like to spell check my .tex files, etc., I don't it going when I'm doing quick stuff in Vim so I set it just for MacVim here
 set spell

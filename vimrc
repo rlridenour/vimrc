@@ -95,6 +95,7 @@ set cursorline
 set ttyfast
 set relativenumber
 set undofile
+set visualbell "don't beep
 
 " Save when focus is lost
 au FocusLost * :wa
