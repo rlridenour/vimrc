@@ -24,4 +24,7 @@ set columns=80
 set guioptions-=T
 set guioptions-=r
 
+" Command-1 for 80 columns, Command-2 for double.
+map <D-1> :set co=80<CR>
+map <D-2> :set co=165<CR>:winc =<CR>
 

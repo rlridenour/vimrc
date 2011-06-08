@@ -221,6 +221,7 @@ inoremap jj <Esc>
 
 nnoremap ; :
 
+
 " Window splitting
 
 nmap <silent> <leader>sh :leftabove vnew<cr>
