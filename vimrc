@@ -93,7 +93,7 @@ set wildmenu
 set wildmode=list:longest,full
 set cursorline
 set ttyfast
-set relativenumber
+" set relativenumber
 set undofile
 set visualbell "don't beep
 
